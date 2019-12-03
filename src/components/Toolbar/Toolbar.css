@@ -1,0 +1,91 @@
+.toolbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #521751;
+	height: 56px;
+}
+
+.toolbar_navigation {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1rem;
+}
+
+.toolbar_navigation, .selector, button, a{
+	color: white;
+}
+
+a:visited{ 
+	color: white;
+	text-decoration: none;
+}
+
+.toolbar_logo {
+	margin-left: 1rem;
+}
+
+.toolbar_logo button, a{
+	text-decoration: none;
+	font-size: 1.5rem;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.spacer {
+	flex: 1;
+}
+
+.toolbar_navigation-items ul{
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	margin-left: 1.5rem;
+	padding: 0;
+	display: flex;
+}
+
+.toolbar_navigation-items li{
+	padding: 0 0.5rem;
+}
+
+.toolbar_navigation-items, .selector,  button, a{
+	text-decoration: none;
+	background: transparent;
+	border-radius: 0.25rem;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	box-sizing: border-box;
+	font-size: .9rem;
+	outline: none;
+}
+
+
+.toolbar_navigation-items button:hover,
+.toolbar_navigation-items button:active,
+.toolbar_navigation-items select:hover,
+.toolbar_navigation-items select:active {
+	color: #fa923f;
+}
+
+@media (max-width: 768px) {
+	.toolbar_navigation-items, a {
+		display: none;
+	}
+}
+
+@media (min-width: 769px) {
+	.toolbar_toggle-button {
+		display: none;
+	}
+	.toolbar_logo {
+		margin-left: 0;
+	}
+}
