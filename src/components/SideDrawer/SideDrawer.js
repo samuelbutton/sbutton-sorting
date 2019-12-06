@@ -22,10 +22,9 @@ const sideDrawer = props => {
 					</select>
 				</li>
 				<li><button onClick={props.vizClickHandler}>Visualize!</button></li>
-				<li><button onClick={props.clearClickHandler}>Clear Visualization</button></li>
+				<li><button onClick={props.clearClickHandler}>Generate New Array</button></li>
 			</ul>
 		</nav>
-		// maybe add shell sort
 	);
 };
 

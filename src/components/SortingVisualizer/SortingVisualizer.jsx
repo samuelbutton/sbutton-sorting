@@ -52,7 +52,6 @@ export default class SortingVisualizer extends React.Component {
 
   updateWindowDimensions() {
     if (this.state.visualizationRunning) return;
-    // this.updateWindowDimensions();
     this.resetArray();
     const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions();
     const arrayBars = document.getElementsByClassName('array-bar');
@@ -155,7 +154,6 @@ export default class SortingVisualizer extends React.Component {
       this.setAlgorithm();
       return;
     }
-    // this.updateWindowDimensions();
     if (this.state.visualizationDisplayed) await this.resetArray();
     await this.lockInteractions();
     const {array, algorithm} = this.state;
