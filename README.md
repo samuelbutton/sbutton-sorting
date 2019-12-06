@@ -1,5 +1,5 @@
-## Pathfinding Visualization
+## Sorting Visualization
 
-An application to visualize a set of pathfinding algorithms. Visit the below link to test: A* Search, Greedy Best-First Search, Dijkstra's Algorithm, Breadth-First Search, and Depth-First Search. Add walls to impede an algorithm's progress. Access the below application with desktop or mobile.
+An application to visualize a set of sorting algorithms. Visit the below link to test: Quick Sort, Merge Sort, Heap Sort, and Bubble Sort. Resize window to adjust bar width, number of bars, and animation speed. Access the below application with desktop or mobile.
 
-https://sbutton-pathfinding.herokuapp.com/
+https://sbutton-sorting.herokuapp.com/

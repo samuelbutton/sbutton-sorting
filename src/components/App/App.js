@@ -39,11 +39,11 @@ class App extends Component {
   };
   visualClickHandler = () => {
     this.setState({sideDrawerOpen: false, alertOpen: false});
-    this.sortingElement.current.visualizeAlgorithm(true);
+    this.sortingElement.current.visualizeAlgorithm();
   };
   clearVizClickHandler = () => {
     this.setState({sideDrawerOpen: false, alertOpen: false});
-    this.sortingElement.current.clearVisualization(true);
+    this.sortingElement.current.resetArray();
   };
   selectionChangeHandler = (event) => {
     this.sortingElement.current.setAlgorithm(event.target.value);

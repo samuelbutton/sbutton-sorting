@@ -9,7 +9,7 @@ const toolbar = props => (
 			<div className="toolbar_toggle-button">
 				<DrawerToggleButton click={props.drawerClickHandler}/>
 			</div>
-			<div className="toolbar_logo clearButton"><button onClick={props.clearClickHandler}>Pathfinding Visualizer</button></div>
+			<div className="toolbar_logo clearButton"><button onClick={props.clearClickHandler}>Sorting Visualizer</button></div>
 			
 			<div className="toolbar_navigation-items">
 				<ul>
@@ -24,12 +24,12 @@ const toolbar = props => (
 					</li>
 						
 					<li><button  className="vizButton" onClick={props.vizClickHandler}>Visualize!</button></li>
-					<li><button  className="clearButton" onClick={props.clearClickHandler}>Clear Visualization</button></li>
+					<li><button  className="clearButton" onClick={props.clearClickHandler}>Generate New Array</button></li>
 				</ul>
 			</div>
 			<div className="spacer" />
-			<a href="https://github.com/scbutton95/sbutton-pathfinding" class="button
-      github-button">View on Github</a>
+			<a href="https://github.com/scbutton95/sbutton-sorting" 
+			className="button github-button">View on Github</a>
 		</nav>
 	</header>
 	);
