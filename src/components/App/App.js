@@ -14,7 +14,7 @@ class App extends Component {
   state = {
     sideDrawerOpen: false,
     alertOpen: false,
-    selection: undefined
+    selection: undefined,
   };
 
   drawerToggleClickHandler = () => {
@@ -49,6 +49,9 @@ class App extends Component {
     this.sortingElement.current.setAlgorithm(event.target.value);
     this.setState({selection: event.target.value});
   };
+  rangeChangeHandler = (event) => {
+    this.sortingElement.current.setRangeValue(event.target.value);
+  };
 
   render() {
     let backdrop;
@@ -58,14 +61,15 @@ class App extends Component {
     return (
       <div className="App" style={{height: '100%'}}>
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} vizClickHandler={this.visualClickHandler} 
-        clearClickHandler={this.clearVizClickHandler} changeHandler={this.selectionChangeHandler}/>
+        clearClickHandler={this.clearVizClickHandler} changeHandler={this.selectionChangeHandler} 
+         rangeHandler={this.rangeChangeHandler}/>
         <SideDrawer show={this.state.sideDrawerOpen} vizClickHandler={this.visualClickHandler} 
         clearClickHandler={this.clearVizClickHandler} changeHandler={this.selectionChangeHandler}
-        selection={this.state.selection} />
+        selection={this.state.selection}/>
         {backdrop}
         
         <main style={{marginTop: '64px'}}>
-          <SortingVisualizer className='pathViz' ref={this.sortingElement} 
+          <SortingVisualizer className='sortViz' ref={this.sortingElement} 
           alertHandler={this.alertToggleHandler} />
         </main>
       </div>

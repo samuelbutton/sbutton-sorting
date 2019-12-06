@@ -25,6 +25,13 @@ const toolbar = props => (
 						
 					<li><button  className="vizButton" onClick={props.vizClickHandler}>Visualize!</button></li>
 					<li><button  className="clearButton" onClick={props.clearClickHandler}>Generate New Array</button></li>
+					<li></li>
+					<li>
+						<div className="slidecontainer">
+							<input type="range" min="500" max="1100" className="slider" id="arrayRange" onChange={props.rangeHandler} /> 
+							<p className="slider-caption">Adjust sort array!</p>
+						</div> 
+					</li>
 				</ul>
 			</div>
 			<div className="spacer" />

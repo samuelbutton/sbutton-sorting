@@ -16,7 +16,7 @@ export default class SortingVisualizer extends React.Component {
   constructor(props) {
     super(props);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions();
+    const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions(false);
     this.state = {
       array: [],
       maxHeight: maxHeight,
@@ -31,17 +31,16 @@ export default class SortingVisualizer extends React.Component {
     alertHandler = props.alertHandler;
   }
 
-  updateDimensions() {
+  updateDimensions(valueActivated, value) {
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
-    let newDimensions = [];
-    newDimensions.push(windowHeight - 100);
-    let add = windowWidth > 1000 ? 100 : 0;
-    newDimensions.push(windowWidth/40+add);
-    newDimensions.push(Math.min((425)/(newDimensions[1]), 50));
-    add = windowWidth > 1000 ? 0 : newDimensions[2]*10;
+    if (valueActivated) windowWidth = value;
+    const maxHeight = windowHeight - 100;
+    let barWidth = Math.floor(9000/windowWidth);
+    let numBars = Math.max(20,Math.floor((windowWidth - 500) / (barWidth+2)));
+    let newDimensions = [maxHeight, numBars, barWidth];
+    let add = windowWidth > 1000 ? 0 : newDimensions[2]*10;
     newDimensions.push(newDimensions[2]+add);
-
     return newDimensions;
   }
 
@@ -53,7 +52,23 @@ export default class SortingVisualizer extends React.Component {
   updateWindowDimensions() {
     if (this.state.visualizationRunning) return;
     this.resetArray();
-    const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions();
+    const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions(false);
+    const arrayBars = document.getElementsByClassName('array-bar');
+    for (let i = 0; i < arrayBars.length; i++) {
+      const barStyle = arrayBars[i].style;
+      barStyle.width = `${barWidth}px`;
+    }
+    this.setState({ 
+      maxHeight, 
+      numBars, 
+      barWidth, 
+      animationSpeed
+    });
+  }
+
+  setRangeValue(value) {
+    this.resetArray();
+    const [maxHeight, numBars, barWidth, animationSpeed] = this.updateDimensions(true, value);
     const arrayBars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < arrayBars.length; i++) {
       const barStyle = arrayBars[i].style;
@@ -95,6 +110,10 @@ export default class SortingVisualizer extends React.Component {
     container.style['min-width'] = `${barWidth * numBars + 100}px`;
     const vizButton = document.getElementsByClassName('vizButton')[0];
     vizButton.style.color = '#521751';
+    const sliderCaption = document.getElementsByClassName("slider-caption")[0];
+    sliderCaption.style.color = '#fa923f';
+    const slider = document.getElementsByClassName("slider")[0];
+    slider.disabled = true;
   }
 
   unlockInteractions() {
@@ -112,6 +131,10 @@ export default class SortingVisualizer extends React.Component {
     container.style['min-width'] = "";
     const vizButton = document.getElementsByClassName('vizButton')[0];
     vizButton.style.color = '#521751';
+    const sliderCaption = document.getElementsByClassName("slider-caption")[0];
+    sliderCaption.style.color = 'white';
+    const slider = document.getElementsByClassName("slider")[0];
+    slider.disabled = false;
   }
 
   setAlgorithm(algorithm) {
