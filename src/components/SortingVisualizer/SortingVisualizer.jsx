@@ -98,7 +98,7 @@ export default class SortingVisualizer extends React.Component {
 
   lockInteractions() {
     this.setState({visualizationRunning: true, visualizationDisplayed: true});
-    const {maxHeight, numBars, barWidth} = this.state;
+    const {maxHeight} = this.state;
     const clearButtons = document.getElementsByClassName("clearButton");
     for (const button of clearButtons)
       button.style.color = '#fa923f';
@@ -107,7 +107,6 @@ export default class SortingVisualizer extends React.Component {
     select.disabled = true;
     const container = document.getElementsByClassName('array-container')[0];
     container.style['min-height'] =  `${maxHeight + 150}px`;
-    container.style['min-width'] = `${barWidth * numBars + 100}px`;
     const vizButton = document.getElementsByClassName('vizButton')[0];
     vizButton.style.color = '#521751';
     const sliderCaption = document.getElementsByClassName("slider-caption")[0];
@@ -155,7 +154,6 @@ export default class SortingVisualizer extends React.Component {
         this.setState({showAlertBox: true});
         return;
     }
-    // this.clearVisualization(false);
     const initSelection = document.getElementsByClassName('initialSelection');
     initSelection[0].style.display = 'none';
     const vizButton = document.getElementsByClassName('vizButton');
